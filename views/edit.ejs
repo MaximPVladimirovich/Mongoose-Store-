@@ -5,23 +5,27 @@
 <%- include(`./partials/head.ejs`)%>
 
   <body>
-    <a href="/balls">Home</a>
+    <a href="/products">Home</a>
 
-    <form action="/balls/<%=ball._id%>?_method=PUT" method="POST">
-      <label>
-        <input class="inputForm" type="text" name="title" value="" /><br />
+    <form action="/products/<%=ball._id%>?_method=PUT" method="POST">
+      <label>title
+        <input class="inputForm" type="text" name="title" value="<%=ball.title%>" /><br />
       </label>
-      <label>
-        <textarea class="inputForm" name="description" value="<%=ball.description%>"></textarea>
+      <label>Image
+        <input class="inputForm" type="text" name="img" value="<%=ball.img%>" /><br />
       </label>
-      <label>
-        <input class="inputForm" type="text" name="origin" value="<%=ball.origin%>" /><br />
+
+      <label>Made in:
+        <input class="inputForm" type="text" name="madeIn" value="<%=ball.madeIn%>" /><br />
       </label>
-      <label>
+      <label>Price: $
         <input class="inputForm" type="text" name="price" value="<%=ball.price%>" /><br />
       </label>
-      <label>
+      <label>In stock:
         <input class="inputForm" type="text" name="inStock" value="<%=ball.inStock%>" /><br />
+      </label>
+      <label>description
+        <input class="inputForm" name="description" value="<%=ball.description%>"></input>>
       </label>
       <input type="submit" name="" value="Submit changes">
     </form>

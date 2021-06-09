@@ -7,27 +7,24 @@
   <body>
 
     <h1>Ball Inventory Manager</h1>
-    <a href="/balls/new">New product</a>
+    <a href="/products/new">New product</a>
 
     <div class="container">
-      <%balls.forEach(function(ball) { %>
-        <a href="/balls/<%=ball._id%>">
+      <%products.forEach(function(ball) { %>
+        <a href="/products/<%=ball._id%>">
           <h2>
             <%=ball.title%>
           </h2>
         </a>
         <div class="imgDiv">
-          <img src="<%=ball.img%>" width="160" height="160"">
+          <a href="/products/<%=ball._id%>"><img src="<%=ball.img%>"></a>
+
         </div>
 
+        <p>
+          In stock: <%=ball.inStock%>
+        </p>
 
-        <h4>
-          <%=ball.origin%>
-        </h4>
-        <h6>
-          <%=ball.sport%>
-        </h6>
-        
         <p>
           Price:$<%=ball.price%>
         </p>

@@ -5,27 +5,27 @@
 <%- include(`./partials/head.ejs`)%>
 
   <body>
-    <form action="/balls" method="POST">
+    <form action="/products" method="POST">
       <Label>Title
         <input type="text" name="title"><br />
       </Label>
       <Label>Description
-        <input type="textarea" name="description"><br />
+        <input type="text" name="description"><br />
       </Label>
       <Label>Image Url
-        <input type="text" name="url"><br />
+        <input type="text" name="img"><br />
       </Label>
       <Label>Sport
         <input type="text" name="sport"><br />
       </Label>
-      <Label>Origin
+      <Label>Made in
         <input type="text" name="origin"><br />
       </Label>
       <Label>Price
         <input type="text" name="price"><br />
       </Label>
       <Label>left in stock
-        <input type="text" name="inStock"><br />
+        <input type="text" name="ball"><br />
       </Label>
       <input type="submit" name="" value="Create product">
     </form>

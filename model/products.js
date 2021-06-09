@@ -1,15 +1,14 @@
 const mongoose = require(`mongoose`);
 const Schema = mongoose.Schema;
-const BallSchema = new Schema({
+const ProductsSchema = new Schema({
   title: String,
   description: String,
   img: String,
-  sport: String,
-  origin: String,
+  madeIn: String,
   price: Number,
   inStock: Number
 })
 
-const Balls = mongoose.model(`Balls`, BallSchema)
+const Products = mongoose.model(`Products`, ProductsSchema)
 
-module.exports = Balls
+module.exports = Products

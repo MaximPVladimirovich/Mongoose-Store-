@@ -5,8 +5,8 @@
 <%- include(`./partials/head.ejs`)%>
 
   <body>
-    <a href="/balls">Home</a>
-    <form action="/balls/<%=ball._id%>?_method=DELETE" method="POST">
+    <a href="/products">Home</a>
+    <form action="/products/<%=ball._id%>?_method=DELETE" method="POST">
       <label>
         <input type="submit" value="DELETE"> </label>
     </form>
@@ -14,7 +14,7 @@
       <div id="buy-btn">Buy
       </div>
     </a>
-    <a href="/balls/<%=ball._id%>/edit"><label>Edit
+    <a href="/products/<%=ball._id%>/edit"><label>Edit
 
       </label>
     </a>
@@ -22,8 +22,12 @@
       <%=ball.title%>
     </h2>
     <h5>
-      Made in <%=ball.origin%>
+      Description <%=ball.description%>
     </h5>
+    <h5>
+      Made in <%=ball.madeIn%>
+    </h5>
+
     <h5>
       In stock: <%=ball.inStock%>
     </h5>

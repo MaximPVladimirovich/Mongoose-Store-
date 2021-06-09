@@ -3,3 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.imgDiv {
+  width: 200px;
+  height: max-content
+}
+
+.imgDiv img {
+width: 100%;
+}
