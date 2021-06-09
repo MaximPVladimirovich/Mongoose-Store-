@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const BallSchema = new Schema({
   title: String,
   description: String,
+  img: String,
   sport: String,
   origin: String,
   price: Number,

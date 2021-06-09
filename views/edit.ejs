@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+
+<%- include(`./partials/head.ejs`)%>
+
+  <body>
+    <a href="/balls">Home</a>
+
+    <form action="/balls/<%=ball._id%>?_method=PUT" method="POST">
+      <input class="inputForm" type="text" name="title" value="" /><br />
+      <textarea class="inputForm" name="description" value="<%=ball.description%>"></textarea>
+      <input class="inputForm" type="text" name="origin" value="<%=ball.origin%>" /><br />
+      <input class="inputForm" type="text" name="price" value="<%=ball.price%>" /><br />
+      <input class="inputForm" type="text" name="inStock" value="<%=ball.inStock%>" /><br />
+      <input type="submit" name="" value="Submit changes">
+    </form>
+
+    <script src="" async defer></script>
+  </body>
+
+</html>

@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require(`mongoose`);
 const express = require(`express`);
+const methodOverride = require(`method-override`);
 const app = express();
 const Balls = require(`./model/products.js`)
 const port = process.env.PORT || 3000;
@@ -11,6 +12,9 @@ const port = process.env.PORT || 3000;
 
 // Middleware 
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride(`_method`))
+app.use(express.static(__dirname + `/public`));
+app.use(express.json());
 
 const db = mongoose.connection;
 mongoose.connect(process.env.DATABASEURL, {
@@ -34,15 +38,31 @@ app.get(`/balls`, (req, res) => {
 })
 // New
 app.get(`/balls/new`, (req, res) => {
-  res.send(`hello`)
+  res.render(`new.ejs`)
+
 })
 // Delete
 app.delete(`/balls/:id`, (req, res) => {
-  Logs.findByIdAndDelete(req.params.id, function (error, deletedBall) {
+  Balls.findByIdAndDelete(req.params.id, function (error, deletedBall) {
     res.redirect(`/balls`)
   })
 })
-// Update
+
+// update 
+app.put(`/balls/:id`, (req, res) => {
+  const updatedBall = new Balls({
+    _id: req.params.id,
+    title: req.body.title,
+    description: req.body.description,
+    origin: req.body.origin,
+    price: req.body.price,
+    inStock: req.body.inStock
+  })
+  Balls.updateOne({ _id: req.params.id }, updatedBall).then
+    (res.redirect(`/balls`))
+})
+
+
 // Create
 app.post(`/balls`, (req, res) => {
   Balls.create(req.body, function (error, createdBall) {
@@ -50,7 +70,15 @@ app.post(`/balls`, (req, res) => {
   });
 });
 
-// Edit
+// -Edit
+app.get(`/balls/:id/edit`, (req, res) => {
+  Balls.findById(req.params.id, function (error, ball) {
+    console.log(ball)
+    res.render(`edit.ejs`, {
+      ball: ball
+    })
+  })
+})
 // Show
 app.get(`/balls/:id`, (req, res) => {
   Balls.findById(req.params.id, function (error, ball) {
@@ -67,8 +95,7 @@ app.get(`/index/:id`, (req, res) => {
   })
 })
 
-
-
+// Listen
 app.listen(port, function () {
   console.log(`listening: ${port}`)
 })
