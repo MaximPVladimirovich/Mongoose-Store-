@@ -59,9 +59,8 @@ app.put(`/balls/:id`, (req, res) => {
     inStock: req.body.inStock
   })
   Balls.updateOne({ _id: req.params.id }, updatedBall).then
-    (res.redirect(`/balls`))
+    (res.redirect(`/balls/${updatedBall._id}`))
 })
-
 
 // Create
 app.post(`/balls`, (req, res) => {
@@ -73,24 +72,15 @@ app.post(`/balls`, (req, res) => {
 // -Edit
 app.get(`/balls/:id/edit`, (req, res) => {
   Balls.findById(req.params.id, function (error, ball) {
-    console.log(ball)
     res.render(`edit.ejs`, {
-      ball: ball
-    })
-  })
-})
-// Show
-app.get(`/balls/:id`, (req, res) => {
-  Balls.findById(req.params.id, function (error, ball) {
-    res.render(`show.ejs`, {
       ball
     })
   })
 })
 
-
-app.get(`/index/:id`, (req, res) => {
-  Book.findById(req.params.id, function (error, ball) {
+// Show
+app.get(`/balls/:id`, (req, res) => {
+  Balls.findById(req.params.id, function (error, ball) {
     res.render(`show.ejs`, { ball })
   })
 })
