@@ -26,12 +26,40 @@ db.once(`open`, function () {
 })
 
 // Index
+app.get(`/balls`, (req, res) => {
+  Balls.find({}, function (error, balls) {
+    res.render(`index.ejs`, { balls })
+  })
+
+})
 // New
+app.get(`/balls/new`, (req, res) => {
+  res.send(`hello`)
+})
 // Delete
+app.delete(`/balls/:id`, (req, res) => {
+  Logs.findByIdAndDelete(req.params.id, function (error, deletedBall) {
+    res.redirect(`/balls`)
+  })
+})
 // Update
 // Create
+app.post(`/balls`, (req, res) => {
+  Balls.create(req.body, function (error, createdBall) {
+    res.redirect(`/balls`)
+  });
+});
+
 // Edit
 // Show
+app.get(`/balls/:id`, (req, res) => {
+  Balls.findById(req.params.id, function (error, ball) {
+    res.render(`show.ejs`, {
+      ball
+    })
+  })
+})
+
 
 app.get(`/index/:id`, (req, res) => {
   Book.findById(req.params.id, function (error, ball) {

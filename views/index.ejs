@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+  <h1>Logs</h1>
+  <a href="/balls/new">Create new Ball</a>
+
+  <%balls.forEach(function(ball) { %>
+    <a href="/balls/<%=ball._id%>">
+      <h2>
+        <%=ball.title%>
+      </h2>
+    </a>
+
+
+    <h4>
+      <%=ball.origin%>
+    </h4>
+    <h6>
+      <%=ball.sport%>
+    </h6>
+    <% })%>
+
+
+      <script src="" async defer></script>
+</body>
+
+</html>
