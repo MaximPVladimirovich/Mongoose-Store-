@@ -10,15 +10,10 @@
       <label>
         <input type="submit" value="DELETE"> </label>
     </form>
-    <a href="">
-      <div id="buy-btn">Buy
-      </div>
-    </a>
     <a href="/products/<%=ball._id%>/edit"><label>Edit
-
       </label>
     </a>
-    <h2>
+    <h2 id="showTitle">
       <%=ball.title%>
     </h2>
     <h5>
@@ -27,7 +22,6 @@
     <h5>
       Made in <%=ball.madeIn%>
     </h5>
-
     <h5>
       In stock: <%=ball.inStock%>
     </h5>
@@ -37,6 +31,13 @@
     <div class="imgDiv">
       <img class="showImg" src="<%=ball.img%>" width="250px" height="200px">
     </div>
+    <form action="/products/<%=ball._id%>/buy?_method=PUT" method="POST">
+      <input class="inputForm" type="hidden" name="InStock" value="<%=ball.inStock%>" /><br />
+      </label>
+      <input type="submit" name="" value="BUY">
+    </form>
+
+
     </div>
 
 

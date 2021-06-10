@@ -8,7 +8,6 @@
 
     <h1>Ball Inventory Manager</h1>
     <a href="/products/new">New product</a>
-
     <div class="container">
       <%products.forEach(function(ball) { %>
         <a href="/products/<%=ball._id%>">
@@ -18,21 +17,15 @@
         </a>
         <div class="imgDiv">
           <a href="/products/<%=ball._id%>"><img src="<%=ball.img%>"></a>
-
         </div>
-
         <p>
           In stock: <%=ball.inStock%>
         </p>
-
         <p>
           Price:$<%=ball.price%>
         </p>
         <% })%>
     </div>
-
-
-
   </body>
 
 </html>

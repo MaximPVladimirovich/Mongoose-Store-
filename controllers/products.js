@@ -35,6 +35,24 @@ productsRouter.put(`/:id`, (req, res) => {
   Products.updateOne({ _id: req.params.id }, updatedBall).then
     (res.redirect(`/products/${updatedBall._id}`))
 })
+// Buy button
+productsRouter.put(`/:id/buy`, (req, res) => {
+  Products.findById(req.params.id, (error, foundProduct) => {
+    req.body = {
+      _id: foundProduct.id,
+      title: foundProduct.title,
+      description: foundProduct.description,
+      img: foundProduct.img,
+      madeIn: foundProduct.madeIn,
+      price: foundProduct.price,
+      inStock: foundProduct.inStock - 1
+    };
+    Products.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedBuy) => {
+      res.redirect(`/products/${req.params.id}`)
+    })
+  })
+})
+
 
 // Create
 productsRouter.post(`/`, (req, res) => {
