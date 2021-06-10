@@ -5,44 +5,55 @@
 <%- include(`./partials/head.ejs`)%>
 
   <body>
-    <a href="/products">Home</a>
-    <form action="/products/<%=ball._id%>?_method=DELETE" method="POST">
-      <label>
-        <input type="submit" value="DELETE"> </label>
-    </form>
-    <a href="/products/<%=ball._id%>/edit"><label>Edit
-      </label>
-    </a>
-    <h2 id="showTitle">
-      <%=ball.title%>
-    </h2>
-    <h5>
-      Description <%=ball.description%>
-    </h5>
-    <h5>
-      Made in <%=ball.madeIn%>
-    </h5>
-    <h5>
-      In stock: <%=ball.inStock%>
-    </h5>
-    <h5>
-      Price: $<%=ball.price%>
-    </h5>
-    <div class="imgDiv">
-      <img class="showImg" src="<%=ball.img%>" width="250px" height="200px">
+    <header>
+      <div class="title">
+        <a href="/products">Home</a>
+      </div>
+      <div>
+        <a href="/products/<%=ball._id%>/edit"><label>Edit
+          </label>
+        </a>
+      </div>
+      <div>
+        <form action="/products/<%=ball._id%>?_method=DELETE" method="POST">
+          <label>
+            <input type="submit" value="DELETE"> </label>
+        </form>
+      </div>
+
+    </header>
+    <div class="container">
+      <div class="flex">
+        <div class="pgrid">
+          <div class="cgrid">
+            <div id="showTitle">
+              <%=ball.title%>
+            </div>
+            <div>
+              Description <%=ball.description%>
+            </div>
+            <div>
+              Made in <%=ball.madeIn%>
+            </div>
+            <div>
+              In stock: <%=ball.inStock%>
+            </div>
+            <div>
+              Price: $<%=ball.price%>
+            </div>
+          </div>
+        </div>
+        <div class="imgDiv">
+          <img class="showImg" src="<%=ball.img%>" width="250px" height="200px">
+          <form action="/products/<%=ball._id%>/buy?_method=PUT" method="POST">
+            <!-- Got successful -1 but didn't get to add a condition to remove ability to buy if inStock = 0 -->
+            <input class="inputForm" type="hidden" name="InStock" value="<%=ball.inStock%>" /><br />
+            <input type="submit" name="" value="BUY">
+          </form>
+        </div>
+      </div>
     </div>
-    <form action="/products/<%=ball._id%>/buy?_method=PUT" method="POST">
-      <input class="inputForm" type="hidden" name="InStock" value="<%=ball.inStock%>" /><br />
-      </label>
-      <input type="submit" name="" value="BUY">
-    </form>
-
-
     </div>
-
-
-
-    </script>
   </body>
 
 </html>

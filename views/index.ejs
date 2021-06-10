@@ -5,27 +5,42 @@
 <%- include(`./partials/head.ejs`)%>
 
   <body>
+    <header>
+      <div class="title">
+        Ball Inventory Manager
+      </div>
+      <div>
+        <a href="/products/new">New product</a>
+      </div>
+    </header>
 
-    <h1>Ball Inventory Manager</h1>
-    <a href="/products/new">New product</a>
     <div class="container">
-      <%products.forEach(function(ball) { %>
-        <a href="/products/<%=ball._id%>">
-          <h2>
-            <%=ball.title%>
-          </h2>
-        </a>
-        <div class="imgDiv">
-          <a href="/products/<%=ball._id%>"><img src="<%=ball.img%>"></a>
-        </div>
-        <p>
-          In stock: <%=ball.inStock%>
-        </p>
-        <p>
-          Price:$<%=ball.price%>
-        </p>
-        <% })%>
+      <div class="flex">
+        <%products.forEach(function(ball) { %>
+          <div class="pgrid">
+            <div class="cgrid">
+              <div>
+                <a href="/products/<%=ball._id%>">
+                  <%=ball.title%>
+                </a>
+              </div>
+              <div>
+                In stock: <%=ball.inStock%>
+              </div>
+              <div>
+                Price:$<%=ball.price%>
+              </div>
+            </div>
+            <div class="imgDiv">
+              <a href="/products/<%=ball._id%>"><img src="<%=ball.img%>"></a>
+            </div>
+          </div>
+          <% })%>
+      </div>
     </div>
+    <footer>
+
+    </footer>
   </body>
 
 </html>
